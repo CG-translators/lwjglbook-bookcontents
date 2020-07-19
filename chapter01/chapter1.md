@@ -1,26 +1,26 @@
-# First steps
+# İlk adımlar
 
-In this book we will learn the principal techniques involved in developing 3D games. We will develop our samples in Java and we will use the Lightweight Java Game Library \([LWJGL](http://www.lwjgl.org/)\). The LWJGL library enables the access to low-level APIs \(Application Programming Interface\) such as OpenGL.
+Bu kitapta, 3B oyunların geliştirilmesinde yer alan temel teknikleri öğreneceğiz. Örneklerimizi Java'da geliştireceğiz ve Lightweight Java Game Library'i kullanacağız \([LWJGL](http://www.lwjgl.org/)\). LWJGL kütüphanesi, OpenGL gibi düşük seviyeli API'lere \ (Uygulama Programlama Arayüzü \) erişim sağlar.
 
-LWJGL is a low level API that acts like a wrapper around OpenGL. If your idea is to start creating 3D games in a short period of time maybe you should consider other alternatives like  \[JmonkeyEngine\]. By using this low level API you will have to go through many concepts and write lots of lines of code before you see the results. The benefit of doing it this way is that you will get a much better understanding of 3D graphics and also you can get better control.
+LWJGL, OpenGL'i sarmallayan düşük seviyeli bir API'dir. Amacınız kısa sürede 3B oyunlar oluşturmaya başlamaksa, belki de \ [JmonkeyEngine \] gibi diğer alternatifleri de düşünmelisiniz. Bu düşük seviyeli API' yi kullanarak, sonuçları görmeden önce birçok kavramdan geçmeniz ve çok sayıda kod satırı yazmanız gerekecektir. Bunun avantajı, 3B grafikleri çok daha iyi anlamanız ve daha iyi kontrol edebilmenizdir.
 
-As said in the previous paragraphs we will be using Java for this book. We will be using Java 10, so you need to download the Java SDK from Oracle’s pages. Just choose the installer that suits your Operating System and install it. This book assumes that you have a moderate understanding of the Java language.
+Önceki paragraflarda belirtildiği gibi, bu kitap için Java'yı kullanacağız. Java 10' u kullanacağız, bu yüzden Java SDK' yı Oracle'ın sayfalarından indirmeniz gerekiyor. Sadece işletim sisteminize uygun yükleyiciyi seçin ve yükleyin. Bu kitap, Java dilini orta seviyede bildiğinizi varsayar.
 
-You may use the Java IDE you want in order to run the samples. You can download IntelliJ IDEA which has good support for Java 10. Since Java 10 is only available, by now, for 64 bits platforms, remember to download the 64 bits version of IntelliJ. IntelliJ provides a free open source version, the Community version, which you can download from here: [https://www.jetbrains.com/idea/download/](https://www.jetbrains.com/idea/download/ "Intellij").
+Örnekleri çalıştırmak için istediğiniz Java IDE' yi kullanabilirsiniz. Java 10 için iyi bir desteğe sahip olan IntelliJ IDEA' yı indirebilirsiniz. Java 10 sadece 64 bit platformlar için mevcut olduğundan, IntelliJ' nin 64 bit sürümünü indirmeyi unutmayın. IntelliJ, buradan [https://www.jetbrains.com/idea/download/](https://www.jetbrains.com/idea/download/ "Intellij") indirebileceğiniz ücretsiz açık kaynak sürümü olan Topluluk Sürümü' nü sunar: .
 
 ![](/chapter01/intellij.png)
 
-For building our samples we will be using [Maven](https://maven.apache.org/). Maven is already integrated in most IDEs and you can directly open the different samples inside them. Just open the folder that contains the chapter sample and IntelliJ will detect that it is a maven project.
+Örneklerimizi inşaa etmek için [Maven](https://maven.apache.org/) kullanacağız. Maven zaten çoğu IDE' ye entegre edilmiştir ve içindeki çeşitli örnekleri doğrudan açabilirsiniz. Sadece bölüm örneğini içeren klasörü açın ve IntelliJ bunun bir maven projesi olduğunu algılar.
 
 ![](/chapter01/maven_project.png)
 
-Maven builds projects based on an XML file named `pom.xml` \(Project Object Model\) which manages project dependencies \(the libraries you need to use\) and the steps to be performed during the build process. Maven follows the principle of convention over configuration, that is, if you stick to the standard project structure and naming conventions the configuration file does not need to explicitly say where source files are or where compiled classes should be located.
+Maven, proje bağımlılıklarını (kullanmanız gereken kütüphaneleri \) yöneten ` pom.xml` \ (Proje Nesne Modeli \) adlı bir XML dosyasına ve derleme işlemi sırasında gerçekleştirilecek adımlara dayalı projeler oluşturur. Maven, konfigürasyon üzerinde toplanma prensibini takip eder, yani standart proje yapısına ve adlandırma kurallarına bağlı kalırsanız, konfigürasyon dosyasının kaynak dosyaların nerede olduğunu veya derlenmiş sınıfların nerede bulunması gerektiğini açıkça söylemesine gerek yoktur.
 
-This book does not intend to be a maven tutorial, so please find the information about it in the web in case you need it.  The source code folder defines a parent project which defines the plugins to be used and collects the versions of the libraries employed.
+Bu kitap bir maven eğitseli olmak niyetinde değildir, bu yüzden ihtiyacınız olması durumunda lütfen web' deki bilgileri araştırın.  Kaynak kod klasörü, kullanılacak eklentileri tanımlayan ve kullanılan kütüphanelerin sürümlerini toplayan bir üst projeyi tanımlar.
 
-LWJGL 3.1 introduced some changes in the way that the project is built. Now the base code is much more modular, and we can be more selective in the packages that we want to use instead of using a giant monolithic jar file. This comes at a cost: You now need to carefully specify the dependencies one by one. But the [download](https://www.lwjgl.org/download) page includes a fancy script that generates the pom file for you. In our case, we will just be using GLFW and OpenGL bindings. You can check what the pom file looks like in the source code.
+LWJGL 3.1, projenin oluşturulma biçiminde bazı değişiklikler yaptı. Artık temel kod çok daha modüler ve dev bir monolitik jar dosyası kullanmak yerine kullanmak istediğimiz paketlerde daha seçici olabiliyoruz. Bu durum bir maliyet ile birlikte geliyor: Şimdi bağımlılıkları tek tek dikkatlice belirtmeniz gerekiyor. Ancak [bu sayfa] (https://www.lwjgl.org/download), sizin için pom dosyasını oluşturan özel bir komut dosyası içerir. Bizim durumumuzda, sadece GLFW ve OpenGL bağlamalarını kullanacağız. Pom dosyasının kaynak kodunu kontrol edebilirsiniz.
 
-The LWJGL platform dependency already takes care of unpacking native libraries for your platform, so there's no need to use other plugins \(such as `mavennatives`\). We just need to set up three profiles to set a property that will configure the LWJGL platform. The profiles will set up the correct values of that property for Windows, Linux and Mac OS families.
+LWJGL platform bağımlılığı zaten platformunuz için yerel kütüphanelerin paketini açmakla ilgilenir, bu nedenle diğer eklentileri (`mavennatives`gibi) kullanmaya gerek yoktur. LWJGL platformunu yapılandıracak bir özellik ayarlamak için sadece üç profil oluşturmamız gerekiyor.Profiller; Windows, Linux ve Mac OS aileleri için bu özelliğin doğru değerlerini ayarlayacaktır.
 
 ```xml
     <profiles>
@@ -60,7 +60,7 @@ The LWJGL platform dependency already takes care of unpacking native libraries f
     </profiles>
 ```
 
-Inside each project, the LWJGL platform dependency will use the correct property established in the profile for the current platform.
+Her proje içinde LWJGL platform bağımlılığı geçerli platform için profilde kurulan doğru özelliği kullanır.
 
 ```xml
         <dependency>
@@ -71,17 +71,17 @@ Inside each project, the LWJGL platform dependency will use the correct property
         </dependency>
 ```
 
-Besides that, every project generates a runnable jar \(one that can be executed by typing java -jar name\_of\_the\_jar.jar\). This is achieved by using the maven-jar-plugin which creates a jar with a `MANIFEST.MF` file with the correct values. The most important attribute for that file is `Main-Class`, which sets the entry point for the program. In addition, all the dependencies are set as entries in the `Class-Path` attribute for that file. In order to execute it on another computer, you just need to copy the main jar file and the lib directory \(with all the jars included there\) which are located under the target directory.
+Bunun yanı sıra, her proje çalıştırılabilir bir .jar oluşturur \(java yazarak çalıştırılabilir bir -jar name\_of\_the\_jar.jar\). Bu, doğru değerlere sahip bir `MANIFEST.MF` dosyasına sahip bir jar oluşturan maven-jar-eklentisi kullanılarak gerçekleştirilir. Bu dosya için en önemli özellik, programın giriş noktasını ayarlayan `Main-Class` dır. Ayrıca, tüm bağımlılıklar söz konusu dosya için `Class-Path` özniteliğinde girdiler olarak ayarlanır. Başka bir bilgisayarda çalıştırmak için, ana jar dosyasını ve hedef dizinin altında bulunan lib jar' ını \ (tüm jar' lar dahil \) kopyalamanız yeterlidir.
 
-The jars that contain LWJGL classes, also contain the native libraries. LWJGL will also take care of extracting them and adding them to the path where the JVM will look for libraries.
+LWJGL sınıflarını içeren jar dosyaları ayrıca yerel kütüphaneleri de içerir. LWJGL onları ayıklamak ve JVM' nin kütüphaneleri arayacağı yolu eklemekle ilgilenecektir.
 
-Chapter 1 source code is taken directly from the getting started sample in the LWJGL site \([http://www.lwjgl.org/guide](http://www.lwjgl.org/guide)\). You will see that we are not using Swing or JavaFX as our GUI library. Instead of that we are using [GLFW](www.glfw.org) which is a library to handle GUI components \(Windows, etc.\) and events \(key presses, mouse movements, etc.\) with an OpenGL context attached in a straightforward way. Previous versions of LWJGL provided a custom GUI API but, for LWJGL 3, GLFW is the preferred windowing API.
+Bölüm 1 kaynak kodu doğrudan LWJGL sitesindeki Başlarken örneğinden alıntıdır \([http://www.lwjgl.org/guide](http://www.lwjgl.org/guide)\). GUI kütüphanemiz olarak Swing veya JavaFX kullanmadığımızı göreceksiniz. Bunun yerine, GUI bileşenlerini \ (Pencere, vb.) ve \ olaylarını (tuşa basma, fare hareketleri, vb.) OpenGL içeriği ile işlemek için basitçe bağlayan  [GLFW] (www.glfw.org) kütüphanesini kullanıyoruz. LWJGL' nin önceki sürümleri özel bir GUI API' si sağlamıştı, ancak LWJGL 3 için GLFW tercih edilen pencereleme API' dır.
 
-The samples source code is very well documented and straightforward so we won’t repeat the comments here.
+Örneklerin kaynak kodu çok iyi dokümanlaştırılmış ve açıktır, bu nedenle yorumları tekrar etmeyeceğiz.
 
-If you have your environment correctly set up you should be able to execute it and see a window with a red background.
+Ortamınızı doğru bir şekilde kurduysanız, onu çalıştırabilmeniz ve kırmızı arka plana sahip bir pencere görebilmeniz gerekir.
 
 ![Hello World](hello_world.png)
 
-**The source code of this book is published in **[**GitHub**](https://github.com/lwjglgamedev/lwjglbook)**.**
+**Bu kitabın kaynak kodu şu adreste yayınlanmaktadır: **[**GitHub**](https://github.com/lwjglgamedev/lwjglbook)**.**
 
