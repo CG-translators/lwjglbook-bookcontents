@@ -18,7 +18,7 @@ Maven, proje bağımlılıklarını (kullanmanız gereken kütüphaneleri \) yö
 
 Bu kitap bir maven eğitseli olmak niyetinde değildir, bu yüzden ihtiyacınız olması durumunda lütfen web' deki bilgileri araştırın.  Kaynak kod klasörü, kullanılacak eklentileri tanımlayan ve kullanılan kütüphanelerin sürümlerini toplayan bir üst projeyi tanımlar.
 
-LWJGL 3.1, projenin oluşturulma biçiminde bazı değişiklikler yaptı. Artık temel kod çok daha modüler ve dev bir monolitik jar dosyası kullanmak yerine kullanmak istediğimiz paketlerde daha seçici olabiliyoruz. Bu durum bir maliyet ile birlikte geliyor: Şimdi bağımlılıkları tek tek dikkatlice belirtmeniz gerekiyor. Ancak [bu sayfa] (https://www.lwjgl.org/download), sizin için pom dosyasını oluşturan özel bir komut dosyası içerir. Bizim durumumuzda, sadece GLFW ve OpenGL bağlamalarını kullanacağız. Pom dosyasının kaynak kodunu kontrol edebilirsiniz.
+LWJGL 3.1, projenin oluşturulma biçiminde bazı değişiklikler yaptı. Artık temel kod çok daha modüler ve dev bir monolitik jar dosyası kullanmak yerine kullanmak istediğimiz paketlerde daha seçici olabiliyoruz. Bu durum bir maliyet ile birlikte geliyor: Şimdi bağımlılıkları tek tek dikkatlice belirtmeniz gerekiyor. Ancak [bu sayfa](https://www.lwjgl.org/download), sizin için pom dosyasını oluşturan özel bir komut dosyası içerir. Bizim durumumuzda, sadece GLFW ve OpenGL bağlamalarını kullanacağız. Pom dosyasının kaynak kodunu kontrol edebilirsiniz.
 
 LWJGL platform bağımlılığı zaten platformunuz için yerel kütüphanelerin paketini açmakla ilgilenir, bu nedenle diğer eklentileri (`mavennatives`gibi) kullanmaya gerek yoktur. LWJGL platformunu yapılandıracak bir özellik ayarlamak için sadece üç profil oluşturmamız gerekiyor.Profiller; Windows, Linux ve Mac OS aileleri için bu özelliğin doğru değerlerini ayarlayacaktır.
 
@@ -75,7 +75,7 @@ Bunun yanı sıra, her proje çalıştırılabilir bir .jar oluşturur \(java ya
 
 LWJGL sınıflarını içeren jar dosyaları ayrıca yerel kütüphaneleri de içerir. LWJGL onları ayıklamak ve JVM' nin kütüphaneleri arayacağı yolu eklemekle ilgilenecektir.
 
-Bölüm 1 kaynak kodu doğrudan LWJGL sitesindeki Başlarken örneğinden alıntıdır \([http://www.lwjgl.org/guide](http://www.lwjgl.org/guide)\). GUI kütüphanemiz olarak Swing veya JavaFX kullanmadığımızı göreceksiniz. Bunun yerine, GUI bileşenlerini \ (Pencere, vb.) ve \ olaylarını (tuşa basma, fare hareketleri, vb.) OpenGL içeriği ile işlemek için basitçe bağlayan  [GLFW] (www.glfw.org) kütüphanesini kullanıyoruz. LWJGL' nin önceki sürümleri özel bir GUI API' si sağlamıştı, ancak LWJGL 3 için GLFW tercih edilen pencereleme API' dır.
+Bölüm 1 kaynak kodu doğrudan LWJGL sitesindeki Başlarken örneğinden alıntıdır \([http://www.lwjgl.org/guide](http://www.lwjgl.org/guide)\). GUI kütüphanemiz olarak Swing veya JavaFX kullanmadığımızı göreceksiniz. Bunun yerine, GUI bileşenlerini \ (Pencere, vb.) ve \ olaylarını (tuşa basma, fare hareketleri, vb.) OpenGL içeriği ile işlemek için basitçe bağlayan  [GLFW](www.glfw.org) kütüphanesini kullanıyoruz. LWJGL' nin önceki sürümleri özel bir GUI API' si sağlamıştı, ancak LWJGL 3 için GLFW tercih edilen pencereleme API' dır.
 
 Örneklerin kaynak kodu çok iyi dokümanlaştırılmış ve açıktır, bu nedenle yorumları tekrar etmeyeceğiz.
 
