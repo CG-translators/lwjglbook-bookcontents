@@ -1,8 +1,8 @@
-﻿# The Game Loop
+﻿# Oyun Döngüsü
 
-In this chapter we will start developing our game engine by creating our game loop. The game loop is the core component of every game. It is basically an endless loop which is responsible for periodically handling user input, updating game state and rendering to the screen.
+Bu bölümde, oyun döngümüzü oluşturarak oyun motorumuzu geliştirmeye başlayacağız. Oyun döngüsü, her oyunun temel bileşenidir. Temel olarak, kullanıcı girişini periyodik olarak ele almaktan, oyun durumunu güncellemekten ve ekranda sahnelemekten sorumlu olan sonsuz bir döngüdür.
 
-The following snippet shows the structure of a game loop:
+Aşağıdaki kod parçası bir oyun döngüsünün yapısını göstermektedir:
 
 ```java
 while (keepOnRunning) {
@@ -12,9 +12,9 @@ while (keepOnRunning) {
 }
 ```
 
-So, is that all? Are we finished with game loops? Well, not yet. The above snippet has many pitfalls. First of all the speed that the game loop runs at will be different depending on the machine it runs on. If the machine is fast enough the user will not even be able to see what is happening in the game. Moreover, that game loop will consume all the machine resources.
+Hepsi bu kadar mı? Oyun döngülerini bitirdik mi? Henuz değil. Yukarıdaki kod parçasının birçok tuzağı var. Her şeyden önce, oyun döngüsünün çalıştığı hız, çalıştığı makineye bağlı olarak farklı olacaktır. Makine yeterince hızlıysa, kullanıcı oyunda neler olduğunu bile göremez. Dahası, bu oyun döngüsü makinenin tüm kaynaklarını tüketecektir.
 
-Thus, we need the game loop to try running at a constant rate independently of the machine it runs on. Let us suppose that we want our game to run at a constant rate of 50 Frames Per Second \(FPS\). Our game loop could be something like this:
+Bu nedenle, üzerinde çalıştığı makineden bağımsız olarak sabit bir hızda çalışmayı denemek için oyun döngüsüne ihtiyacımız var. Oyunumuzun saniyede 50 kare \(FPS\) gibi sabit bir hızda çalışmasını istediğimizi varsayalım. Oyun döngümüz şöyle bir şey olabilir:
 
 ```java
 double secsPerFrame = 1.0d / 50.0d;
@@ -28,9 +28,9 @@ while (keepOnRunning) {
 }
 ```
 
-This game loop is simple and could be used for some games but it also presents some problems. First of all, it assumes that our update and render methods fit in the available time we have in order to render at a constant rate of 50 FPS \(that is, `secsPerFrame` which is equal to 20 ms.\).
+Bu oyun döngüsü basit ve bazı oyunlar için kullanılabilir, ancak aynı zamanda bazı sorunları da beraberinde getirir. Her şeyden önce, güncelleme ve oluşturma yöntemlerimizin, 50 FPS' lik sabit bir hızda\(yani, 20 ms'ye eşit olan `secsPerFrame`\) işlemek için sahip olduğumuz mevcut zamana uyduğunu varsayar.
 
-Besides that, our computer may be prioritizing other tasks that prevent our game loop from executing for a certain period of time. So, we may end up updating our game state at very variable time steps which are not suitable for game physics.
+Bunun yanı sıra, bilgisayarımız oyun döngüsünün belirli bir süre boyunca yürütülmesini engelleyen diğer görevlere öncelik veriyor olabilir. Bu nedenle, oyun durumumuzu oyun fiziği için uygun olmayan çok değişken zaman adımlarında güncelleyebiliriz.
 
 Finally, sleep accuracy may range to tenth of a second, so we are not even updating at a constant frame rate even if our update and render methods take no time. So, as you see the problem is not so simple.
 
@@ -268,7 +268,7 @@ In the `render` method we get notified when the window has been resized in order
 
 The class hierarchy that we have created will help us to separate our game engine code from the code of a specific game. Although it may seem unnecessary at this moment, we need to isolate generic tasks that every game will use from the state logic, artwork and resources of a specific game in order to reuse our game engine. In later chapters we will need to restructure this class hierarchy as our game engine gets more complex.
 
-## Platform Differences \(OSX\)
+## Platform Farklılıkları \(OSX\)
 
 You will be able to run the code described above on Windows or Linux, but we still need to do some modifications for OSX. As it's stated in the GLFW documentation:
 
